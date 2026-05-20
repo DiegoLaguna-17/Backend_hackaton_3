@@ -7,9 +7,10 @@
     "dev": "nodemon src/index.js"
   },
   "dependencies": {
-    "express": "^4.19.2",
+    "@supabase/supabase-js": "^2.42.7",
     "dotenv": "^16.4.5",
-    "@supabase/supabase-js": "^2.42.7"
+    "express": "^4.19.2",
+    "multer": "^2.1.1"
   },
   "devDependencies": {
     "nodemon": "^3.1.0"
