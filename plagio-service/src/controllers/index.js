@@ -36,7 +36,10 @@ const testRoute = async (req, res) => {
     }
 };
 
+const plagioController = require('./plagioController');
+
 module.exports = {
     healthCheck,
-    testRoute
+    testRoute,
+    ...plagioController
 };

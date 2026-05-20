@@ -223,6 +223,25 @@ const subirTarea = async (req, res) => {
       });
     }
 
+    // Disparar la detección de plagio de forma asíncrona no-bloqueante
+    const plagioServiceUrl = process.env.PLAGIO_SERVICE_URL || 'http://plagio-service:3004';
+    fetch(`${plagioServiceUrl}/detect`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ intentoId: data.id })
+    }).then(async (response) => {
+        if (!response.ok) {
+            const errText = await response.text();
+            console.error(`[Plagio Trigger Error] Status ${response.status}: ${errText}`);
+        } else {
+            console.log(`[Plagio Trigger Success] Detección iniciada para intento ${data.id}`);
+        }
+    }).catch((err) => {
+        console.error('[Plagio Trigger Error] Fallo al conectar con plagio-service:', err.message);
+    });
+
     return res.status(201).json({
       ok: true,
       message: "Tarea subida correctamente",
