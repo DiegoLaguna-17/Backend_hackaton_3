@@ -7,11 +7,9 @@
     "dev": "nodemon src/index.js"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.42.7",
-    "bcryptjs": "^3.0.3",
-    "dotenv": "^16.4.5",
     "express": "^4.19.2",
-    "jsonwebtoken": "^9.0.3"
+    "dotenv": "^16.4.5",
+    "@supabase/supabase-js": "^2.42.7"
   },
   "devDependencies": {
     "nodemon": "^3.1.0"
